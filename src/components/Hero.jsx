@@ -19,7 +19,7 @@ const Hero = () => {
     console.log(`Searching for: ${searchQuery}${selectedExtension}`);
   };
   return (
-    <section className="relative overflow-visible pb-40 md:pb-48 lg:pb-32">
+    <section id="home" className="relative overflow-visible pb-40 md:pb-48 lg:pb-32">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center h-full bg-no-repeat"
@@ -125,7 +125,7 @@ const Hero = () => {
       </div>
 
       {/* Find Domain Section - Overlapping */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 transform translate-y-1/3 md:translate-y-1/2">
+      <div id="domain" className="absolute bottom-0 left-0 right-0 z-20 transform translate-y-1/3 md:translate-y-1/2">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border-2 border-gray-100">
             <div className="text-center mb-4 md:mb-6">
