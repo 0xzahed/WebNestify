@@ -69,31 +69,41 @@ const FAQ = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`rounded-full overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? 'bg-orange-500' : 'bg-white shadow-md'
+                className={`rounded-3xl overflow-hidden transition-all duration-300 ${
+                  openIndex === index 
+                    ? 'bg-orange-500 shadow-xl shadow-orange-200' 
+                    : 'bg-white shadow-lg hover:shadow-xl'
                 }`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className={`w-full flex items-center justify-between px-8 py-5 text-left transition-all duration-300 ${
-                    openIndex === index ? 'text-white' : 'text-gray-900'
+                  className={`w-full flex items-center justify-between px-8 py-6 text-left transition-all duration-300 ${
+                    openIndex === index ? 'text-white' : 'text-gray-900 hover:text-orange-500'
                   }`}
                 >
-                  <span className="font-semibold text-lg pr-4">{faq.question}</span>
-                  {openIndex === index ? (
-                    <Minus className="w-5 h-5 shrink-0" />
-                  ) : (
-                    <Plus className="w-5 h-5 shrink-0" />
-                  )}
+                  <span className="font-bold text-lg pr-4">{faq.question}</span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    openIndex === index 
+                      ? 'bg-white bg-opacity-20' 
+                      : 'bg-orange-500 bg-opacity-10'
+                  }`}>
+                    {openIndex === index ? (
+                      <Minus className="w-5 h-5 text-[#FF6900]" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-white" />
+                    )}
+                  </div>
                 </button>
                 
-                {openIndex === index && (
+                <div className={`transition-all duration-300 overflow-hidden ${
+                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
                   <div className="px-8 pb-6 pt-2">
-                    <p className="text-white text-sm leading-relaxed">
+                    <p className="text-white text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

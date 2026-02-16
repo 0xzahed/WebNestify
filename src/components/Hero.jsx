@@ -1,7 +1,23 @@
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import homeOneBg from '../assets/home-one-bg.jpg';
 import homeImage from '../assets/home-image.png';
 
 const Hero = () => {
+  const [selectedExtension, setSelectedExtension] = useState('.com');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const domainPrices = [
+    { extension: '.store', price: '$2.9' },
+    { extension: '.info', price: '$6.9' },
+    { extension: '.net', price: '$3.75' },
+    { extension: '.to', price: '$3.5' },
+    { extension: '.com', price: '$4.25' }
+  ];
+
+  const handleSearch = () => {
+    console.log(`Searching for: ${searchQuery}${selectedExtension}`);
+  };
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
@@ -37,7 +53,7 @@ const Hero = () => {
       <div className="container mx-auto max-w-7xl px-4 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-125 md:min-h-150">
           {/* Left Side - Server Illustration */}
-          <div className="flex items-center justify-center order-2 lg:order-1">
+          <div className="hidden lg:flex items-center justify-center order-2 lg:order-1">
             <div className="relative w-full max-w-lg">
               <img 
                 src={homeImage} 
@@ -107,6 +123,73 @@ const Hero = () => {
               <button className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full transition font-medium shadow-lg">
                 Get Started
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Find Domain Section */}
+        <div className="mt-16 pb-8">
+          <div className="text-center mb-8">
+        
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Find Domain Name</h2>
+            
+            {/* Domain Prices */}
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-6 text-white">
+              {domainPrices.map((domain, index) => (
+                <div key={index} className="flex items-center gap-1">
+                  <span className="text-orange-500 font-bold text-lg">{domain.price}</span>
+                  <span className="text-white">{domain.extension}</span>
+                  {index < domainPrices.length - 1 && (
+                    <span className="ml-4 text-white opacity-50">|</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Search Box */}
+          <div className="max-w-4xl mx-auto">
+            <div 
+              className="flex flex-col md:flex-row items-stretch md:items-center gap-3 p-3 md:p-4 rounded-3xl md:rounded-full"
+              style={{
+                background: 'rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)'
+              }}
+            >
+              {/* Search Input */}
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Enter Company Name"
+                className="flex-1 bg-white text-gray-800 px-4 md:px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 w-full md:w-auto"
+              />
+
+              <div className="flex gap-3">
+                {/* Domain Extension Selector */}
+                <div className="relative flex-1 md:flex-none">
+                  <select 
+                    value={selectedExtension}
+                    onChange={(e) => setSelectedExtension(e.target.value)}
+                    className="appearance-none bg-white text-gray-800 px-4 md:px-6 py-3 pr-10 rounded-full font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 w-full"
+                  >
+                    {domainPrices.map((domain) => (
+                      <option key={domain.extension} value={domain.extension}>
+                        {domain.extension}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 pointer-events-none" />
+                </div>
+
+                {/* Search Button */}
+                <button 
+                  onClick={handleSearch}
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold transition-all duration-300 whitespace-nowrap flex-1 md:flex-none"
+                >
+                  Search
+                </button>
+              </div>
             </div>
           </div>
         </div>

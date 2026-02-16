@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import contactImage from '../assets/contact-image.png';
 
@@ -24,7 +25,12 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       {/* Hero Section */}
       <section 
         className="relative py-20 overflow-hidden"
@@ -51,16 +57,26 @@ const Contact = () => {
         <div className="container mx-auto max-w-7xl px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Image */}
-            <div className="flex items-center justify-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex items-center justify-center"
+            >
               <img 
                 src={contactImage} 
                 alt="Contact Us" 
                 className="w-full max-w-lg animate-float"
               />
-            </div>
+            </motion.div>
 
             {/* Right - Content */}
-            <div className="text-white text-center lg:text-right">
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-white text-center lg:text-right"
+            >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Get In Touch Now
               </h1>
@@ -70,7 +86,7 @@ const Contact = () => {
               <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300">
                 Get Started
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -79,17 +95,28 @@ const Contact = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto max-w-7xl px-4">
           {/* Section Header */}
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Send Your Queries</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
               invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
+            <motion.div
+              initial={{ x: -30, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Email and Name Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -161,10 +188,16 @@ const Contact = () => {
                   Send Message
                 </button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Map */}
-            <div className="bg-gray-200 rounded-lg overflow-hidden h-100 lg:h-full">
+            <motion.div
+              initial={{ x: 30, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="bg-gray-200 rounded-lg overflow-hidden h-100 lg:h-full"
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976383964465!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
                 width="100%"
@@ -175,7 +208,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Location Map"
               ></iframe>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -183,7 +216,13 @@ const Contact = () => {
       {/* Contact Info Section */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {/* Send Mail */}
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
@@ -216,10 +255,10 @@ const Contact = () => {
                 Blvd, The Bronx, USA 6890
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

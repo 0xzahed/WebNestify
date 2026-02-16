@@ -1,10 +1,37 @@
+import { motion } from 'framer-motion';
+
 const Hosting = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-blue-900 flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-blue-900 flex items-center justify-center pt-20"
+    >
       <div className="text-center text-white">
-        <h1 className="text-5xl font-bold mb-4">Hosting Plans</h1>
-        <p className="text-xl mb-8">Choose the perfect hosting solution for your needs</p>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-5xl font-bold mb-4"
+        >
+          Hosting Plans
+        </motion.h1>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-xl mb-8"
+        >
+          Choose the perfect hosting solution for your needs
+        </motion.p>
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4"
+        >
           <div className="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg">
             <h3 className="text-2xl font-bold mb-4">Shared Hosting</h3>
             <p className="text-4xl font-bold mb-4">$9.99<span className="text-lg">/mo</span></p>
@@ -32,9 +59,9 @@ const Hosting = () => {
               <li>✓ 24/7 Premium Support</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
