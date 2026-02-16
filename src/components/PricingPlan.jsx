@@ -55,7 +55,7 @@ const PricingPlan = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="pt-48 md:pt-52 lg:pt-40 pb-20 bg-gray-100">
       <style>{`
         .pricing-card-header {
           border-top: 2px solid #212C71;
